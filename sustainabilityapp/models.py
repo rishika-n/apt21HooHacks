@@ -23,7 +23,10 @@ class Profile(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
     
-    daily_progress = models.IntegerField(default=0, max=6)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default=None)
+    first_name = models.CharField(max_length=200, default='Alex')
+    last_name = models.CharField(max_length=200, default='Smith')
+    daily_progress = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
     
     # """ INTEREST_CHOICES = (
