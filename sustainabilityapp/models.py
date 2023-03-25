@@ -3,11 +3,13 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.postgres.fields import ArrayField
+
 
 # Create your models here.
 class Profile(models.Model):
     def __str__(self):
-        return self.first_name
+        return self.first_name + self.last_name
     
     def get_absolute_url(self):
         return reverse('sustainabilityapp:profile', kwargs={})
@@ -20,6 +22,38 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+    
+    daily_progress = models.IntegerField(default=0, max=6)
+    score = models.IntegerField(default=0)
+    
+    # """ INTEREST_CHOICES = (
+    #     ('0', 'Climate Change'),
+    #     ('1', 'Renewable Energy'),
+    #     ('2', 'Gardening'),
+    #     ('3','Water Conservation'),
+    #     ('4', 'Secondhand Apparel'),
+    #     ('5', 'Recycling'),
+    #     ('6', 'Local Produce'),
+    #     ('7', 'Supporting Sustainable Businesses'),
+    #     ('8', 'Composting'),
+    #     ('9', 'Plastic-Free'),
+    #     ('10', 'Carpooling'),
+    #     ('11', 'Public Transportation'),
+    #     ('12', 'Awareness'),
+    #     ('13', 'Veganism'),
+    #     ('14', 'Biodegradable Products'),
+    #     ('15', 'Animal Lover'),
+    #     ('16', 'Tree Hugger'),
+    #     ('17', 'Farmers Markets'),
+    #     ('18', 'Ocean Conservation'),
+    #     ('19', 'Reducing Carbon Footprint'),
+    #     ('20', 'Anti-Littering'),
+    #     ('21', 'Food Waste'),
+    # ) """
+    
+
+
+    
         
 class Friends(models.Model):
     users1=models.ManyToManyField(User,null=True)
