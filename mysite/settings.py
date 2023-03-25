@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'sustainabilityapp.apps.SustainabilityappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,12 +77,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ddgbvi7vquic5t',
-        'USER': 'iexampakciuyio',
-        'PASSWORD': '7f40d6e1e1afb988eed9471910dd5ec8980f6b5b66a29b0fa537d7053b8421d8',
-        'HOST': 'ec2-3-93-160-246.compute-1.amazonaws.com',
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'ddgbvi7vquic5t',
+        # 'USER': 'iexampakciuyio',
+        # 'PASSWORD': '7f40d6e1e1afb988eed9471910dd5ec8980f6b5b66a29b0fa537d7053b8421d8',
+        # 'HOST': 'ec2-3-93-160-246.compute-1.amazonaws.com',
+        # 'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
+
     }
 }
 
@@ -127,9 +132,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    if 'HEROKU' in os.environ:
-        import django_heroku
-        django_heroku.settings(locals())
-except ImportError:
-    found = False
+# try:
+#     if 'HEROKU' in os.environ:
+#         import django_heroku
+#         django_heroku.settings(locals())
+# except ImportError:
+#     found = False
