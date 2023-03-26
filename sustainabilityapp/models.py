@@ -24,7 +24,7 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
-    
+        
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default=None)
     first_name = models.CharField(max_length=200, default='Alex')
     last_name = models.CharField(max_length=200, default='Smith')
@@ -79,7 +79,7 @@ class Friends(models.Model):
             current_user=current_user
         )
         friend.users1.remove(new_friend)
-
+ 
     
 
 
