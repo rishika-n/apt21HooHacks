@@ -30,7 +30,13 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=200, default='Smith')
     daily_progress = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
-    
+    ch1Complete = models.BooleanField(default=False)
+    ch2Complete = models.BooleanField(default=False)
+    ch3Complete = models.BooleanField(default=False)
+    ch4Complete = models.BooleanField(default=False)
+    ch5Complete = models.BooleanField(default=False)
+    ch6Complete = models.BooleanField(default=False)
+
     # """ INTEREST_CHOICES = (
     #     ('0', 'Climate Change'),
     #     ('1', 'Renewable Energy'),

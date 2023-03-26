@@ -19,6 +19,7 @@ class ProfileView(generic.ListView):
         return Profile.objects.filter(user=self.request.user).last()
 
 def homePage(request):
+    person = Profile.objects.filter(user=request.user).last()
     todayest = timezone('EST')
     today = datetime.now(todayest).date()
     if Challenges.objects.count() == 0:
@@ -31,6 +32,14 @@ def homePage(request):
         set.ch5 = arrChallenges[4]
         set.ch6 = arrChallenges[5]
         set.save()
+        person.ch1Complete = False
+        person.ch2Complete = False
+        person.ch3Complete = False
+        person.ch4Complete = False
+        person.ch5Complete = False
+        person.ch6Complete = False
+        person.daily_progress = 0
+        person.save()
     else:
         thisCH = Challenges.objects.get(pk=1)
         arrChallenges = [thisCH.ch1, thisCH.ch2, thisCH.ch3, thisCH.ch4, thisCH.ch5, thisCH.ch6]
@@ -47,8 +56,17 @@ def homePage(request):
         set.ch5 = arrChallenges[4]
         set.ch6 = arrChallenges[5]
         set.day = datetime.now(todayest).date()
+        person.ch1Complete = False
+        person.ch2Complete = False
+        person.ch3Complete = False
+        person.ch4Complete = False
+        person.ch5Complete = False
+        person.ch6Complete = False
+        person.daily_progress = 0
+        person.save()
         set.save()
-    return render(request, 'sustainabilityapp/home.html', {'challenges':arrChallenges})
+    
+    return render(request, 'sustainabilityapp/home.html', {'challenges':arrChallenges, 'profile':person})
 
 def updateChallenges():
     with open("sustainabilityapp/challenges.txt", "r") as f:
