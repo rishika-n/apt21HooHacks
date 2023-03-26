@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cqez1#dui@o=ca0+f*+dd$h7(celyv7m2d21siehr2jnksnvpy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'sustainabilityapp.herokuapp.com']
 
 
 # Application definition
@@ -83,14 +83,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'ddgbvi7vquic5t',
-        # 'USER': 'iexampakciuyio',
-        # 'PASSWORD': '7f40d6e1e1afb988eed9471910dd5ec8980f6b5b66a29b0fa537d7053b8421d8',
-        # 'HOST': 'ec2-3-93-160-246.compute-1.amazonaws.com',
-        # 'PORT': '5432',
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ddgbvi7vquic5t',
+        'USER': 'iexampakciuyio',
+        'PASSWORD': '7f40d6e1e1afb988eed9471910dd5ec8980f6b5b66a29b0fa537d7053b8421d8',
+        'HOST': 'ec2-3-93-160-246.compute-1.amazonaws.com',
+        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
 
 
     }
@@ -132,6 +132,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -165,3 +168,10 @@ SOCIALACCOUNT_PROVIDERS = {
 SITE_ID = 4
 LOGIN_REDIRECT_URL = '/sustainabilityapp'
 LOGOUT_REDIRECT_URL = '/'
+
+try:
+    if 'HEROKU' in os.environ:
+        import django_heroku
+        django_heroku.settings(locals())
+except ImportError:
+    found = False
