@@ -1,15 +1,101 @@
+<html lang="en" style="background-color:#AAD6A0">
 <style>
-div {
-    border-radius: 25px;
-    background: #73AD21;
-    padding: 20px;
-    width: 200px;
-    height: 150px;
-  }
-</style>
+.hover-1{
+    line-height: 1.2em;
+	color: black;
+	text-shadow:
+	  0 0 #70A288,
+	  0 1.2em white,
+	overflow: hidden;
+	transition: .3s;
 
-<body>
-    {% for ch in challenges %}
-        <div>{{ch}}</div>
-    {% endfor %}
+}
+.hover-1:hover{
+	text-shadow:
+	  0 -1.2em #70A288,
+	  0 0 white;
+} 
+
+.block {
+    border-radius: 20px;
+    background: #70A288;
+    border-style:solid;
+    border-color:black;
+    padding: 20px;
+    width: 150px;
+    height: 120px;
+	font-family: luminari;
+    font-size: 15px;
+    font-color: black;
+    
+    cursor: pointer;
+    
+    /* .clickable{
+      background:white;
+    }
+    .clickable:hover{
+      background:gray;
+    } */
+
+  }
+  .clickable{
+    background: #70A288;
+    }
+    .clickable:hover {
+      background: #8789C0;
+    }
+
+  
+</style>
+<head class="text-center">
+    <body>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <nav class="navbar navbar-dark bg-dark">
+          <a class="navbar-brand" href="">SustainabileMe</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="profile">Profile</a>
+            </div>
+          </div>
+        </nav>
+    </body>
+    </head>
+
+<body style="background-color: #AAD6A0;">
+    <center>
+        <h1 style="font-family:monospace; font-size: 60px">
+          <p style="width: 35rem; height:4rem; color:black">Daily Challenges</p>
+        </h1>
+    </center>
+    </body>
+<body style="background-color: #AAD6A0"><center>
+    <table>
+        <tbody>
+            <tr>
+                    {% for ch in challenges %}
+                    <td>
+                        <div class="block clickable text-center" onclick="window.location"><b><center>{{ch}}</center></b></div>
+                    </td>
+                    {% endfor %}
+            </tr>
+
+        </tbody>
+        
+    </table>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</center>
 </body>
+</html>

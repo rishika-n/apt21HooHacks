@@ -8,5 +8,6 @@ app_name = 'sustainabilityapp'
 urlpatterns = [
     path('', views.homePage, name='home'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
+    #path('')
 ]
 
