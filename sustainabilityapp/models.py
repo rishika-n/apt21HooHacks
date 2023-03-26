@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.postgres.fields import ArrayField
+import datetime
+from django.utils import timezone
 
 
 # Create your models here.
@@ -87,3 +89,12 @@ class FriendRequest(models.Model):
     sender=models.ForeignKey(User,null=True,related_name='sender1',on_delete=models.CASCADE)
     receiver=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
 
+
+class Challenges(models.Model):
+    day = models.DateField(max_length=1000)
+    ch1 = models.CharField(max_length=1000)
+    ch2 = models.CharField(max_length=1000)
+    ch3 = models.CharField(max_length=1000)
+    ch4 = models.CharField(max_length=1000)
+    ch5 = models.CharField(max_length=1000)
+    ch6 = models.CharField(max_length=1000)
