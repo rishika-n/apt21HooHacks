@@ -35,8 +35,8 @@ def homePage(request):
         thisCH = Challenges.objects.get(pk=1)
         arrChallenges = [thisCH.ch1, thisCH.ch2, thisCH.ch3, thisCH.ch4, thisCH.ch5, thisCH.ch6]
     # today = datetime.strptime('03-28-2023', '%m-%d-%Y').date()
-    print("Today: ", today)
-    print("Latest Challenge Day:", Challenges.objects.get(pk=1).day)
+    # print("Today: ", today)
+    # print("Latest Challenge Day:", Challenges.objects.get(pk=1).day)
     if today > Challenges.objects.get(pk=1).day:
         set = Challenges.objects.get(pk=1)
         arrChallenges = updateChallenges()

@@ -5,6 +5,7 @@
     <h1> Sustainability App </h1>
     {% if user.is_authenticated %}
         <p> Welcome friend, you are logged in as {{user.username}} </p>
+        <meta http-equiv="refresh" content="1; url='sustainabilityapp'" />
     {% else %}
         <a href="{% provider_login_url 'google' %} ">Login With Google</a>
     {% endif %}
